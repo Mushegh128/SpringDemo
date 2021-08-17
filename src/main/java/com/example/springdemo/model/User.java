@@ -21,6 +21,6 @@ public class User {
     private String surname;
     private String email;
     private String password;
-    private UserType type;
+    private String picture_url;
 
 }
