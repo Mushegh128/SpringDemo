@@ -1,7 +1,11 @@
 package com.example.springdemo.controller;
 
+import com.example.springdemo.model.Lesson;
 import com.example.springdemo.model.Rate;
+import com.example.springdemo.model.User;
+import com.example.springdemo.repository.LessonRepository;
 import com.example.springdemo.repository.RateRepository;
+import com.example.springdemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,6 +21,10 @@ import java.util.Optional;
 public class RateController {
     @Autowired
     RateRepository repository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    LessonRepository lessonRepository;
 
     @GetMapping("/rates")
     public String showRates(ModelMap modelMap) {
@@ -35,14 +43,18 @@ public class RateController {
     }
 
     @GetMapping("/addRate")
-    public String addRate() {
+    public String addRate(ModelMap modelMap) {
+        List<User> users = userRepository.findAll();
+        List<Lesson> lessons = lessonRepository.findAll();
+        modelMap.addAttribute("users",users);
+        modelMap.addAttribute("lessons",lessons);
         return "addRate";
     }
 
     @PostMapping("/addRate")
     public String addRatePost(@ModelAttribute Rate rate) {
         repository.save(rate);
-        return "rate";
+        return "redirect:/rates";
     }
 
     @GetMapping("/rates/{id}")

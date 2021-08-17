@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <meta charset="UTF-8">
     <title>addRate</title>
 </head>
 <body>
 <form action="/addRate" method="post">
-  <input type="text" name="userId" placeholder="userId"><br>
-  <input type="text" name="lessonId" placeholder="lessonId"><br>
-  <input type="number" name="rating" placeholder="rating"><br>
-  <input type="submit" value="add">
+    <select name="user.id">
+        User:
+        <option th:each="user: ${users}" th:text="${user.name}" th:value="${user.id}"></option>
+    </select>
+    <select name="lesson.id">
+        lesson:
+        <option th:each="lesson: ${lessons}" th:text="${lesson.title}" th:value="${lesson.id}"></option>
+    </select>
+    <input type="number" name="rating" placeholder="rating"><br>
+    <input type="submit" value="add">
 </form>
 </body>
 </html>
