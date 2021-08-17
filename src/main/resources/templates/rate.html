@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>rate</title>
+</head>
+<body>
+<a href="/addRate"> add rate</a>
+<table>
+    <tr>
+        <th>id</th>
+        <th>user name</th>
+        <th>lesson title</th>
+        <th>rating</th>
+    </tr>
+    <tr th:each="rate: ${rates}">
+
+        <td th:text="${rate.id}"><a th:href="@{/rates/{id} ( id=${rate.id})}" href="#"> </a></td>
+
+        <td th:text="${rate.user.getName()}"></td>
+        <td th:text="${rate.lesson.getTitle()}"></td>
+        <td th:text="${rate.rating}"></td>
+    </tr>
+</table>
+</body>
+</html>
