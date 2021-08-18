@@ -5,12 +5,14 @@
     <title>addUser</title>
 </head>
 <body>
-<form action="/addUser" method="post">
+<form enctype="multipart/form-data" action="/addUser" method="post">
   <input type="text" name="name" placeholder="name"><br>
   <input type="text" name="surname" placeholder="surname"><br>
   <input type="text" name="email" placeholder="email"><br>
   <input type="text" name="password" placeholder="password"><br>
+   Image: <input type="file" name="picture" ><br>
   <input type="submit" value="add">
 </form>
+
 </body>
 </html>
