@@ -30,11 +30,6 @@ public class RateController {
     public String showRates(ModelMap modelMap) {
         try {
             List<Rate> all = repository.findAll();
-            if (all != null) {
-                for (Rate rate : all) {
-                    System.out.println(rate);
-                }
-            }
             modelMap.addAttribute("rates", all);
             return "rate";
         }catch (Exception e){
